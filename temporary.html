@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>This Page Will Not Last</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      transition: background 2s;
+    }
+
+    #text {
+      font-size: 2rem;
+      max-width: 600px;
+      opacity: 1;
+      transition: opacity 2s;
+    }
+  </style>
+</head>
+<body>
+
+<div id="text">
+  This page will not last.
+</div>
+
+<script>
+  let text = document.getElementById("text");
+
+  let messages = [
+    "This page will not last.",
+    "You are here now.",
+    "But not for long.",
+    "Time is passing.",
+    "This is disappearing.",
+    "You are watching it happen.",
+    "You cannot stop it.",
+    "Almost gone.",
+    ""
+  ];
+
+  let i = 0;
+
+  function nextMessage() {
+    if (i < messages.length) {
+      text.style.opacity = 0;
+      
+      setTimeout(() => {
+        text.innerHTML = messages[i];
+        text.style.opacity = 1;
+        i++;
+      }, 2000);
+      
+      setTimeout(nextMessage, 4000);
+    } else {
+      document.body.style.background = "black";
+    }
+  }
+
+  // Start after short delay
+  setTimeout(nextMessage, 2000);
+</script>
+
+</body>
+</html>
